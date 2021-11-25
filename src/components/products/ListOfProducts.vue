@@ -18,12 +18,16 @@
     <div>
       <h5>Кор</h5>
     </div>
+    <OneProduct v-for="product of products" :key="product.counter" :product="product"/>
   </div>
 </template>
 
-<script >
+<script>
+import OneProduct from "@/components/products/OneProduct";
 export default {
-  name: "ListOfProducts"
+  name: "ListOfProducts",
+  props: ["products"],
+  components: {OneProduct}
 }
 </script>
 

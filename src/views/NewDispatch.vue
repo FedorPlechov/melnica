@@ -1,24 +1,36 @@
 <template>
   <div class="container">
     <h4>Отгрузка {{ curDate }}</h4>
-    <InsertProduct/>
+    <InsertProduct @addProduct="addProduct"/>
+    <ListOfProducts :products="this.products"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import InsertProduct from "@/components/InsertNewProduct.vue"; // @ is an alias to /src
+import {defineComponent} from "vue";
+import InsertProduct from "@/components/products/InsertNewProduct.vue";
+import ListOfProducts from "@/components/products/ListOfProducts.vue"; // @ is an alias to /src
 
 export default defineComponent({
   name: "NewProduct",
   components: {
+    ListOfProducts,
     InsertProduct,
   },
+  emits: ["addProduct"],
   data() {
     return {
-      curDate: new Date()
+      curDate: new Date(),
+      products: [] as any[]
+    }
+  },
+  methods: {
+    addProduct(product: any) {
+      product.date = this.curDate;
+      this.products.push(product);
     }
   }
+
 });
 </script>
 
@@ -30,6 +42,7 @@ export default defineComponent({
   height: 100vh;
   border: 2px solid red;
   flex-flow: column;
+
   h4 {
     display: flex;
     border: 2px solid red;

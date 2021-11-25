@@ -52,7 +52,12 @@ export default defineComponent({
         return;
       }
       if (this.product.inform && this.product.quantity) {
-        this.$emit("addProduct", this.product);
+        const payload = {
+          inform: this.product.inform,
+          quantity: this.product.quantity,
+          counter: this.product.counter
+        };
+        this.$emit("addProduct", payload);
         this.clearForm();
       } else if (this.product.quantity === null) {
         this.validationMessage = "Введите кол-во коробок"
