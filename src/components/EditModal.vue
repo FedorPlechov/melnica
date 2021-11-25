@@ -1,6 +1,6 @@
 <template>
   <form >
-    <div class="table_title">
+    <div class="table_inputs">
       <div>
         <label for="date">Дата</label>
         <input type="date" id="date" name="date">
@@ -54,7 +54,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-.table_title {
+.table_inputs {
   display: grid;
   width: 100%;
   grid-template-columns: 27% 30% 10% 15% 10%;
