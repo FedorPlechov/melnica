@@ -27,8 +27,8 @@ export default defineComponent({
   methods: {
     addProduct(product: any) {
       product.date = this.curDate;
-      this.products.push(product);
-    }
+      this.products.unshift(product);
+    },
   }
 
 });
@@ -40,13 +40,13 @@ export default defineComponent({
   justify-content: flex-start;
   width: 100%;
   height: 100vh;
-  border: 2px solid red;
+  border: 2px solid black;
   flex-flow: column;
 
   h4 {
     display: flex;
-    border: 2px solid red;
-    height: 2rem;
+
+    height: 3rem;
     margin: 0 auto 0 auto;
     width: 100%;
     align-items: center;

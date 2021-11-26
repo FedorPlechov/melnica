@@ -1,22 +1,25 @@
 <template>
   <div class="table_inputs">
-    <div>
+    <div class="title">
       <h5>№</h5>
     </div>
-    <div>
+    <div class="title">
       <h5>Дата</h5>
     </div>
-    <div>
+    <div class="title">
       <h5>Продукт</h5>
     </div>
-    <div>
+    <div class="title">
       <h5>Пост</h5>
     </div>
-    <div>
+    <div class="title">
       <h5>Вес</h5>
     </div>
-    <div>
+    <div class="title">
       <h5>Кор</h5>
+    </div>
+    <div class="title">
+      <h5 style="color:red">del</h5>
     </div>
     <OneProduct v-for="product of products" :key="product.counter" :product="product"/>
   </div>
@@ -35,16 +38,22 @@ export default {
 .table_inputs {
   display: grid;
   width: 100%;
-  grid-template-columns:7% 25% 25% 10% 15% 10%;
-  grid-template-rows: 4rem 4rem;
-  border: 1px solid blue;
+  grid-template-columns:7% 25% 25% 10% 15% 10% 7%;
+  grid-template-rows: 4rem ;
+  grid-auto-rows: min-content;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 1px;
   margin: 0;
-  column-gap: 8px;
+  //column-gap: 8px;
 
-  div {
+  div.title {
     width: 100%;
-
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    color:#42b983;
     input {
       padding: 0;
       margin: 0;
