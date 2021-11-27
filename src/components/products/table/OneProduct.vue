@@ -5,13 +5,14 @@
   <div class="cell">{{ getSupplier }}</div>
   <div class="cell">{{ getWeight }}</div>
   <div class="cell">{{ product.quantity }}</div>
-  <div class="cell" @click="deleteProduct"><div class="cross"></div></div>
+  <div class="cell" @click="deleteProduct(product.id)"><div class="cross"></div></div>
 </template>
 
 <script>
 export default {
   name: "OneProduct",
   props: ["product"],
+  inject: ['deleteProduct'],
   computed: {
     getWeight() {
       const int = +this.slice(20, 23);
@@ -65,10 +66,7 @@ export default {
   methods: {
     slice(start, end) {
       return this.product.inform.split("").slice(start, end).join("");
-    },
-    // deleteProduct(){
-    //
-    // }
+    }
   }
 }
 </script>
@@ -81,7 +79,7 @@ export default {
 .cross {
   position: relative;
   border-bottom: 2px solid red;
-  transform: rotateZ(45deg)translateY(5px);
+  transform: rotateZ(45deg)translateY(2px)translateX(8px);
 }
 .cross:before {
   display: block;

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import NewDispatch from "../views/NewDispatch.vue";
 import DispatchDetails from "../views/DispatchDetails.vue";
+import Result from "../views/Result.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Dispatches.vue"),
+  },
+  {
+    path: "/result",
+    name: "Result",
+    component: Result
   },
   {
     path: "/dispatches/:id",

@@ -2,22 +2,29 @@
   <div class="container">
     <h4>Отгрузка {{ curDate }}</h4>
     <InsertProduct @addProduct="addProduct"/>
-    <ListOfProducts :products="this.products"/>
+    <TableOfProducts :products="this.products"/>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
 import InsertProduct from "@/components/products/InsertNewProduct.vue";
-import ListOfProducts from "@/components/products/ListOfProducts.vue"; // @ is an alias to /src
+import TableOfProducts from "@/components/products/table/TableOfProducts.vue";
 
 export default defineComponent({
   name: "NewProduct",
   components: {
-    ListOfProducts,
+    TableOfProducts,
     InsertProduct,
   },
   emits: ["addProduct"],
+  provide(){
+    return {
+      deleteProduct: (id:number) => {
+        this.products = this.products.filter((el) => id !== el.id)
+      }
+    }
+  },
   data() {
     return {
       curDate: new Date(),

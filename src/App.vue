@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
     <router-link to="/">Новая отгрузка</router-link> |
-    <router-link to="/dispatches">Все отгрузки</router-link>
+    <router-link to="/result">Результат</router-link> |
+    <router-link v-if=false to="/dispatches">Все отгрузки</router-link>
   </div>
-  <router-view />
+    <router-view></router-view>
 </template>
 
 <style lang="scss">

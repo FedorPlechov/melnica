@@ -62,7 +62,8 @@ export default defineComponent({
         const payload = {
           inform: this.product.inform,
           quantity: this.product.quantity,
-          counter: this.product.counter
+          counter: this.product.counter,
+          id: new Date().getUTCMilliseconds()
         };
         this.$emit("addProduct", payload);
         this.clearForm();
