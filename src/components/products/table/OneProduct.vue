@@ -5,7 +5,9 @@
   <div class="cell">{{ getSupplier }}</div>
   <div class="cell">{{ getWeight }}</div>
   <div class="cell">{{ product.quantity }}</div>
-  <div class="cell" @click="deleteProduct(product.id)"><div class="cross"></div></div>
+  <div class="cell" @click="deleteProduct(product.id)">
+    <div class="cross"></div>
+  </div>
 </template>
 
 <script>
@@ -15,9 +17,9 @@ export default {
   inject: ['deleteProduct'],
   computed: {
     getWeight() {
-      const int = +this.slice(20, 23);
-      const float = +this.slice(23, 25);
-      return `${int},${float}`;
+      const int = this.slice(20, 23);
+      const float = this.slice(23, 25);
+      return `${int}.${float}`;
     },
     getDate() {
       const day = this.slice(32, 34);
@@ -56,9 +58,13 @@ export default {
         case "33" :
           productName = "сг 3-4";
           break;
-          case "60" :
-          productName = "головы";
+        case "80" :
+          productName = "икра";
           break;
+        default :
+          productName = 'нет в списке'
+          break;
+
       }
       return productName;
     }
@@ -76,16 +82,18 @@ export default {
   padding: 5px 0 5px 0;
   border-bottom: 2px solid black;
 }
+
 .cross {
   position: relative;
   border-bottom: 2px solid red;
-  transform: rotateZ(45deg)translateY(2px)translateX(8px);
+  transform: rotateZ(45deg) translateY(2px) translateX(8px);
 }
+
 .cross:before {
   display: block;
   content: "";
   position: relative;
   border-bottom: 2px solid red;
-  transform: rotateZ(90deg)translateY(0)translateX(3px);
+  transform: rotateZ(90deg) translateY(0) translateX(3px);
 }
 </style>

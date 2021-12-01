@@ -47,9 +47,9 @@ export default defineComponent({
       return this.product.counter;
     },
     getWeight() {
-      const int = +this.product.inform.split("").slice(20,23).join("");
-      const float = +this.product.inform.split("").slice(23,25).join("");
-      return `${int},${float}`;
+      const int = this.product.inform.split("").slice(20,23).join("");
+      const float = this.product.inform.split("").slice(23,25).join("");
+      return +`${int}.${float}`;
     }
   },
   methods: {
