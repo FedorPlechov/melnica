@@ -19,7 +19,7 @@ export default {
     getWeight() {
       const int = this.slice(20, 23);
       const float = this.slice(23, 25);
-      return `${int}.${float}`;
+      return +`${int}.${float}`;
     },
     getDate() {
       const day = this.slice(32, 34);
@@ -60,6 +60,9 @@ export default {
           break;
         case "80" :
           productName = "икра";
+          break;
+        case "60" :
+          productName = "головы";
           break;
         default :
           productName = 'нет в списке'

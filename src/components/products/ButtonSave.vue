@@ -5,18 +5,16 @@
   <div>
     <h5>Всего наименований{{ setNames }}</h5>
     <h5>Всего поставщиков{{ setSup }}</h5>
-    <h5>Всего {{ sum.sumKg }} кг и кор {{ sum.sumQ }}</h5>
+    <h5>Всего {{ sum.sumKg.toFixed(2) }} кг и кор {{ sum.sumQ.toFixed(0) }}</h5>
   </div>
-  <h3>Все Поставщики</h3>
+  <h3>Все Контрагенты</h3>
   <div class="table_output">
     <div class="title">Продукция</div>
     <div class="title">кг</div>
     <div class="title">коробки</div>
     <get-all-inform v-for="el of stat" :key="el.name" :el="el"/>
   </div>
-<!--  <h3>Меркурий {{getSupArrays}}</h3>-->
   <get-merc v-for="item of getSupArrays" :key="item.val" :objSup="item" />
-
 </template>
 
 <script>
@@ -137,10 +135,7 @@ export default {
       return productName;
     },
     changeProducts() {
-
-
       this.products.map(el => {
-
         el.date = this.getDate(el);
         el.weight = +this.getWeight(el);
         el.supplier = +this.getSupplier(el);
@@ -170,6 +165,10 @@ export default {
       return output;
     },
   },
+  created(){
+    this.sum.sumKg = this.products[0].weight;
+    this.sum.sumQ= this.products[0].quantity;
+  }
 }
 </script>
 

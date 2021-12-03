@@ -1,6 +1,6 @@
 <template>
+  <h4>Отгрузка {{ curDate }}</h4>
   <div class="container">
-    <h4>Отгрузка {{ curDate }}</h4>
     <InsertProduct @addProduct="addProduct"/>
     <TableOfProducts :products="this.products"/>
   </div>
@@ -27,8 +27,13 @@ export default defineComponent({
   },
   data() {
     return {
-      curDate: new Date(),
+      date: new Date(),
       products: [] as any[]
+    }
+  },
+  computed:{
+    curDate(){
+      return `${this.date.getDate()}.${this.date.getUTCMonth()+1}.${this.date.getFullYear()}`
     }
   },
   methods: {
@@ -49,15 +54,14 @@ export default defineComponent({
   height: 100vh;
   border: 2px solid black;
   flex-flow: column;
+}
+h4 {
+  display: flex;
 
-  h4 {
-    display: flex;
-
-    height: 3rem;
-    margin: 0 auto 0 auto;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
+  height: 3rem;
+  margin: 0 auto 0 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 </style>
