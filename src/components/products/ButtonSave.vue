@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="fetchProducts" type="button">Сохранить</button>
+    <button v-if="!isSave" @click="fetchProducts" type="button">Сохранить</button>
   </div>
   <div>
     <h5>Всего наименований{{ setNames }}</h5>
@@ -32,7 +32,8 @@ export default {
       sum: {
         sumKg: 0,
         sumQ: 0
-      }
+      },
+      isSave: false,
     }
   },
   watch: {
@@ -40,6 +41,8 @@ export default {
       handler() {
         this.sum.sumKg = 0;
         this.sum.sumQ = 0;
+        this.isSave = 0;
+        this.suppliers = [];
         this.changeProducts();
       },
       deep: true,
@@ -66,15 +69,22 @@ export default {
     async fetchProducts() {
       const response = await fetch("http://192.168.1.104:3000/saveProducts", {
         method: "POST",
-        body: JSON.stringify(this.products),
+        body: JSON.stringify({
+          products: this.products,
+          date: new Date(),
+          sum: this.sum,
+          }),
         headers: {
           "Content-Type": 'application/json'
         }
       });
-      const responseData = await response.json();
+      const responseData = await response;
 
       if (!response.ok) {
         throw new Error(responseData.message || 'Failed to send request.');
+      }
+      if (responseData.status === 200) {
+        this.isSave= true;
       }
     },
 
