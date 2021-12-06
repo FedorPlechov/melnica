@@ -17,7 +17,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/dispatches/:id",
     name: "DispatchDetails",
-    component: DispatchDetails
+    component: DispatchDetails,
+    props: true
   }
 ];
 

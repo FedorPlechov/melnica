@@ -28,7 +28,7 @@ export default defineComponent({
   data() {
     return {
       date: new Date(),
-      products: [] as any[]
+      products: [] as any[],
     }
   },
   computed:{

@@ -5,7 +5,10 @@
   <div class="cell">{{ getSupplier }}</div>
   <div class="cell">{{ getWeight }}</div>
   <div class="cell">{{ product.quantity }}</div>
-  <div class="cell" @click="deleteProduct(product.id)">
+  <div v-if="!isOutput" class="cell" @click="deleteProduct(product.id)">
+    <div class="cross"></div>
+  </div>
+  <div v-else>
     <div class="cross"></div>
   </div>
 </template>
@@ -13,7 +16,7 @@
 <script>
 export default {
   name: "OneProduct",
-  props: ["product"],
+  props: ["product","isOutput"],
   inject: ['deleteProduct'],
   computed: {
     getWeight() {

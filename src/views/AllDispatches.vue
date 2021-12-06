@@ -1,7 +1,7 @@
 <template>
   <h1>Все отгрузки</h1>
   <div class="container">
-  <Dispatch v-for="dispatch of dispatches" :key="dispatch._id" :dispatch="dispatch"/>
+    <Dispatch v-for="dispatch of dispatches" :key="dispatch._id" :dispatch="dispatch"/>
   </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 <style scoped>
-.container{
+.container {
   display: flex;
   flex-flow: column nowrap;
 }

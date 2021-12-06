@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="!isSave" @click="fetchProducts" type="button">Сохранить</button>
+    <button v-if="!isSave&&!isOutput" @click="fetchProducts" type="button">Сохранить</button>
   </div>
   <div>
     <h5>Всего наименований{{ setNames }}</h5>
@@ -24,7 +24,16 @@ import GetMerc from "@/components/output/GetMerc";
 export default {
   name: "ButtonSave",
   components: {GetMerc, GetAllInform},
-  props: ["products"],
+  props: {
+    products: {
+      type:Array,
+      require: true,
+    },
+    isOutput: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       setNames: new Set,

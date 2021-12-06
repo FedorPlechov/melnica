@@ -74,6 +74,9 @@ export default {
         case 10 :
           supplier = '(10)Юра Весна Москва';
           break;
+        case 11 :
+          supplier = '(11)Бриз';
+          break;
         default :
           supplier = '(none)Мельница';
           break;

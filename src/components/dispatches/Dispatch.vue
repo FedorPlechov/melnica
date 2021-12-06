@@ -7,9 +7,6 @@
       <div class="cell">
         {{ dispatch.sum.sumKg }} кг {{ dispatch.sum.sumQ }} кор
       </div>
-      <div class="cell del">
-        Удалить
-      </div>
     </div>
   </router-link>
 </template>
