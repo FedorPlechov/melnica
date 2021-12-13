@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "OneProduct",
-  props: ["product","isOutput"],
+  props: ["product", "isOutput"],
   inject: ['deleteProduct'],
   computed: {
     getWeight() {
@@ -39,6 +39,9 @@ export default {
       switch (numOfProduct) {
         case "28" :
           productName = "бг 1.8-2.7";
+          break;
+        case "20" :
+          productName = "сг НС";
           break;
         case "22" :
           productName = "бг 1.4-1.8";

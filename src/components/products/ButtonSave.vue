@@ -51,7 +51,6 @@ export default {
         this.sum.sumKg = 0;
         this.sum.sumQ = 0;
         this.isSave = 0;
-        this.suppliers = [];
         this.changeProducts();
       },
       deep: true,
@@ -118,6 +117,9 @@ export default {
       const numOfProduct = this.slice(14, 16, el);
       let productName;
       switch (numOfProduct) {
+        case "20" :
+          productName = "сг НС";
+          break;
         case "28" :
           productName = "бг 1.8-2.7";
           break;
@@ -187,7 +189,11 @@ export default {
   created(){
     this.sum.sumKg = this.products[0].weight;
     this.sum.sumQ= this.products[0].quantity;
-  }
+    this.sum.sumKg = 0;
+    this.sum.sumQ = 0;
+    this.isSave = 0;
+    this.changeProducts()
+  },
 }
 </script>
 
