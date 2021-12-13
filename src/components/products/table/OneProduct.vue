@@ -29,7 +29,7 @@ export default {
       const day = this.slice(32, 34);
       const month = this.slice(30, 32);
       const year = this.slice(28, 30);
-      return `${day}.${month}.20${year}`;
+      return `${day}.${month}.${year}`;
     },
     getSupplier() {
       return this.slice(36, 38);

@@ -10,7 +10,7 @@
 import {defineComponent} from "vue";
 import InsertProduct from "@/components/products/InsertNewProduct.vue";
 import TableOfProducts from "@/components/products/table/TableOfProducts.vue";
-import {mapGetters,mapMutations,mapState} from "vuex";
+import {mapGetters,mapMutations} from "vuex";
 
 
 export default defineComponent({
@@ -20,20 +20,12 @@ export default defineComponent({
     InsertProduct,
   },
   emits: ["addProduct"],
-  // provide(){
-  //   return {
-  //     deleteProduct: (id:number) => {
-  //       this.products = this.products.filter((el) => id !== el.id)
-  //     }
-  //   }
-  // },
   computed:{
     ...mapGetters(['curDate','getProducts'])
   },
   methods: {
     ...mapMutations(['addProduct'])
   }
-
 });
 </script>
 

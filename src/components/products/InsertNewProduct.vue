@@ -43,9 +43,6 @@ export default defineComponent({
     }
   },
   computed: {
-    getCounter() {
-      return this.product.counter;
-    },
     getWeight() {
       const int = this.product.inform.split("").slice(20,23).join("");
       const float = this.product.inform.split("").slice(23,25).join("");
