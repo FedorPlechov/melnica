@@ -14,10 +14,11 @@
 </template>
 
 <script>
+import {mapMutations} from "vuex";
+
 export default {
   name: "OneProduct",
   props: ["product", "isOutput"],
-  inject: ['deleteProduct'],
   computed: {
     getWeight() {
       const int = this.slice(20, 23);
@@ -28,7 +29,7 @@ export default {
       const day = this.slice(32, 34);
       const month = this.slice(30, 32);
       const year = this.slice(28, 30);
-      return `${day}.${month}.${year}`;
+      return `${day}.${month}.20${year}`;
     },
     getSupplier() {
       return this.slice(36, 38);
@@ -81,7 +82,8 @@ export default {
   methods: {
     slice(start, end) {
       return this.product.inform.split("").slice(start, end).join("");
-    }
+    },
+    ...mapMutations(['deleteProduct'])
   }
 }
 </script>

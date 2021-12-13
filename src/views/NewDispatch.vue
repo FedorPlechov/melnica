@@ -2,7 +2,7 @@
   <h4>Отгрузка {{ curDate }}</h4>
   <div class="container">
     <InsertProduct @addProduct="addProduct"/>
-    <TableOfProducts :products="this.products"/>
+    <TableOfProducts :products="this.getProducts"/>
   </div>
 </template>
 
@@ -10,6 +10,8 @@
 import {defineComponent} from "vue";
 import InsertProduct from "@/components/products/InsertNewProduct.vue";
 import TableOfProducts from "@/components/products/table/TableOfProducts.vue";
+import {mapGetters,mapMutations,mapState} from "vuex";
+
 
 export default defineComponent({
   name: "NewProduct",
@@ -18,29 +20,18 @@ export default defineComponent({
     InsertProduct,
   },
   emits: ["addProduct"],
-  provide(){
-    return {
-      deleteProduct: (id:number) => {
-        this.products = this.products.filter((el) => id !== el.id)
-      }
-    }
-  },
-  data() {
-    return {
-      date: new Date(),
-      products: [] as any[],
-    }
-  },
+  // provide(){
+  //   return {
+  //     deleteProduct: (id:number) => {
+  //       this.products = this.products.filter((el) => id !== el.id)
+  //     }
+  //   }
+  // },
   computed:{
-    curDate(){
-      return `${this.date.getDate()}.${this.date.getUTCMonth()+1}.${this.date.getFullYear()}`
-    }
+    ...mapGetters(['curDate','getProducts'])
   },
   methods: {
-    addProduct(product: any) {
-      product.date = this.curDate;
-      this.products.unshift(product);
-    },
+    ...mapMutations(['addProduct'])
   }
 
 });
