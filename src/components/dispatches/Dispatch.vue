@@ -5,7 +5,7 @@
         {{ dispatch.date }}
       </div>
       <div class="cell">
-        {{ dispatch.sum.sumKg }} кг {{ dispatch.sum.sumQ }} кор
+        {{ dispatch.sum.sumKg.toFixed(2) }} кг {{ dispatch.sum.sumQ }} кор
       </div>
     </div>
   </router-link>
